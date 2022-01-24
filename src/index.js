@@ -1,18 +1,8 @@
 module.exports = function toReadable (number) {
-  function toReadable(number) {
+  
 let readableNumber = ""
-
 let numberStr = number.toString()
 let numberArr = numberStr.split("")
-console.log(numberStr)
-console.log(numberArr)
-
-//const arrLength = numberArr.length()
-console.log(numberArr.length)
-
-
-
-
 
 function translate0To9(digit) {
     switch (digit) {
@@ -160,8 +150,7 @@ if (number >= 100 && number < 1000) {
 
 
 
-//return readableNumber
-}
+
 
 console.log(toReadable(507))
 }
