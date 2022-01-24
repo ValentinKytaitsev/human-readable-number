@@ -89,7 +89,7 @@ function translate20To99First(number1) {
             return 'thirty'
         break;
         case 4:
-            return 'fourty'
+            return 'forty'
         break;
         case 5:
             return 'fifty'
