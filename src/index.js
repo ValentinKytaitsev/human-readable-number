@@ -6,11 +6,7 @@ let numberArr = numberStr.split("")
 
 function translate0To9(digit) {
     switch (digit) {
-        /*case 0:
-            return 'zero'
-        break;*/
         case 1:
-            //console.log('1 !!!')
             return 'one'
         break;
         case 2:
@@ -39,9 +35,6 @@ function translate0To9(digit) {
         break;
     }
 }
-//console.log(translateTenDigits(5))
-
-
 
 function translate10To19(digit) {
     switch (digit) {
@@ -78,8 +71,6 @@ function translate10To19(digit) {
     }
 }
 
-
-
 function translate20To99First(number1) {
     switch (number1) {
         case 2:
@@ -109,7 +100,6 @@ function translate20To99First(number1) {
     }
 }
 
-
 function translate20To99(number1, number2) {
     if (number2 !== 0) {
         return translate20To99First(number1) + " " + translate0To9(number2)
@@ -118,37 +108,38 @@ function translate20To99(number1, number2) {
     }
 }
 
-
 function translate100To999(numberq1, numberq2, numberq3) {
-    if (number % 100 === 0) {
-        return translate0To9(numberq1) + " " + "hundred"
-    } else
-    if (numberq2 === 0) {
-        return translate0To9(numberq1) + " " + "hundred" + " " + translate0To9(numberq3)
-    } else {
-        return translate0To9(numberq1) + " " + "hundred" + " " + translate20To99(numberq2, numberq3)
+        if (number % 100 === 0) {
+            return translate1To9(numberq1) + " " + "hundred"
+        } else
+        if (numberq2 === 0) {
+            return translate1To9(numberq1) + " " + "hundred" + " " + translate1To9(numberq3)
+        } else
+        if (numberq2 === 1) {
+            return translate1To9(numberq1) + " " + "hundred" + " " + translate11To19(Number("" + numberq2 + numberq3))
+        } else {
+            return translate1To9(numberq1) + " " + "hundred" + " " + translate20To99(numberq2, numberq3)
+        }
     }
-}
-
-
 
 if (number === 0) {
-    return 'zero'
-} else
-if (number >= 1 && number < 10) {
-    return readableNumber + translate0To9(Number(numberArr[0]))
-} else
-if (number >= 10 && number < 20) {
-    return readableNumber + translate10To19(number)
-} else
-if (number >= 20 && number < 100) {
-    return readableNumber + translate20To99(Number(numberArr[0]), Number(numberArr[1]))
-} else
-if (number >= 100 && number < 1000) {
-    return readableNumber + translate100To999(Number(numberArr[0]), Number(numberArr[1]), Number(numberArr[2]))
-}
-
-
+        return 'zero'
+    } else
+    if (number >= 1 && number < 10) {
+        return readableNumber + translate1To9(Number(numberArr[0]))
+    } else
+    if (number === 10) {
+        return 'ten'
+    } else
+    if (number >= 11 && number < 20) {
+        return readableNumber + translate11To19(number)
+    } else
+    if (number >= 20 && number < 100) {
+        return readableNumber + translate20To99(Number(numberArr[0]), Number(numberArr[1]))
+    } else
+    if (number >= 100 && number < 1000) {
+        return readableNumber + translate100To999(Number(numberArr[0]), Number(numberArr[1]), Number(numberArr[2]))
+    }
 
 
 
