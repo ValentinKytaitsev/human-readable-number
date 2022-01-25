@@ -1,5 +1,6 @@
 module.exports = function toReadable (number) {
-let readableNumber = ""
+
+    let readableNumber = ""
     let numberStr = number.toString()
     let numberArr = numberStr.split("")
 
@@ -35,13 +36,16 @@ let readableNumber = ""
         }
     }
 
-    function translate11To19(digit) {
+    function translate10To19(digit) {
         switch (digit) {
+            case 10:
+                return 'ten'
+                break;
             case 11:
                 return 'eleven'
                 break;
             case 12:
-                return 'twelwe'
+                return 'twelve'
                 break;
             case 13:
                 return 'thirteen'
@@ -112,7 +116,7 @@ let readableNumber = ""
                 return translate1To9(numberq1) + " " + "hundred" + " " + translate1To9(numberq3)
             } else
                 if (numberq2 === 1) {
-                    return translate1To9(numberq1) + " " + "hundred" + " " + translate11To19(Number("" + numberq2 + numberq3))
+                    return translate1To9(numberq1) + " " + "hundred" + " " + translate10To19(Number("" + numberq2 + numberq3))
                 } else {
                     return translate1To9(numberq1) + " " + "hundred" + " " + translate20To99(numberq2, numberq3)
                 }
@@ -124,17 +128,14 @@ let readableNumber = ""
         if (number >= 1 && number < 10) {
             return readableNumber + translate1To9(Number(numberArr[0]))
         } else
-            if (number === 10) {
-                return 'ten'
+            if (number >= 10 && number < 20) {
+                return readableNumber + translate10To19(number)
             } else
-                if (number >= 11 && number < 20) {
-                    return readableNumber + translate11To19(number)
+                if (number >= 20 && number < 100) {
+                    return readableNumber + translate20To99(Number(numberArr[0]), Number(numberArr[1]))
                 } else
-                    if (number >= 20 && number < 100) {
-                        return readableNumber + translate20To99(Number(numberArr[0]), Number(numberArr[1]))
-                    } else
-                        if (number >= 100 && number < 1000) {
-                            return readableNumber + translate100To999(Number(numberArr[0]), Number(numberArr[1]), Number(numberArr[2]))
-                        }
+                    if (number >= 100 && number < 1000) {
+                        return readableNumber + translate100To999(Number(numberArr[0]), Number(numberArr[1]), Number(numberArr[2]))
+                    }
 console.log(toReadable(507))
 }
