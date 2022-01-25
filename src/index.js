@@ -4,7 +4,7 @@ let readableNumber = ""
 let numberStr = number.toString()
 let numberArr = numberStr.split("")
 
-function translate0To9(digit) {
+function translate1To9(digit) {
     switch (digit) {
         case 1:
             return 'one'
@@ -36,11 +36,8 @@ function translate0To9(digit) {
     }
 }
 
-function translate10To19(digit) {
+function translate11To19(digit) {
     switch (digit) {
-        case 10:
-            return 'ten'
-        break;
         case 11:
             return 'eleven'
         break;
